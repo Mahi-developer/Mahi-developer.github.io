@@ -1,0 +1,168 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styleSheetIndex.css">
+        <title>
+            devilDeveloper
+        </title>
+        
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous">
+        </script>
+        
+        <script>
+            window.addEventListener('scroll',function(){
+                const parallax_1 = document.querySelector(".img_main");
+                let scrollPosition = window.pageYOffset;
+                const parallax = document.querySelector(".img_about");
+                parallax_1.style.transform = 'translateY('+scrollPosition*0.2+'px)';
+                parallax.style.transform = 'translateY('+scrollPosition*0.2+'px)';
+                const parallax_2 = document.querySelector(".img_recent_works");
+                parallax_2.style.transform = 'translateY('+scrollPosition*0.2+'px)';
+                const parallax_3 = document.querySelector(".cu_img");
+                parallax_3.style.transform = 'translateY('+scrollPosition*0.2+'px)';
+            })
+
+        </script>
+
+        <script>
+            function home(){
+                var focusto = document.getElementById("meet_dd_main");
+                focusto.scrollIntoView(true);
+            }
+            function about(){
+                var focusto = document.getElementById("about_main");
+                focusto.scrollIntoView(true);
+            }
+            function booking(){
+
+            }
+            function recent(){
+                var focusto = document.getElementById("rw_id");
+                focusto.scrollIntoView(true);
+            }
+            function contact(){
+                var focusto = document.getElementById("cu_desc_id");
+                focusto.scrollIntoView(true);
+            }
+            function togglemouse(){
+                $(".nav_button").toggleClass("nav_button nav_button_mouse");                
+            }
+            function togglemouselearn(){
+                $(".learn_more").toggleClass("learn_more learn_more_mouse");
+            }
+        </script>
+
+        <script>
+            function submit(){
+                var vname = document.getElementById("name").value;
+                var vprofession = document.getElementById("profession").value;
+                var vemail = document.getElementById("email").value;
+                var vsubject = document.getElementById("subject").value;
+                var vmessage = document.getElementById("message").value;
+                
+
+                if(vname.length > 0){
+                    if(vprofession.length > 0){
+                        if(vemail.length > 0){
+
+                        }else{
+                            window.alert("Enter a Valid Email!!!")
+                        }
+                    }else{
+                        window.alert("Enter Your Profession!!!")
+                    }
+                    firebase.database().ref('web/'+name).set({
+                        name:vname,
+                        profession:vprofession,
+                        email:vemail,
+                        subject:vsubject,
+                        message:vmessage
+                    });
+                    vname.value = "";
+                    vprofession = "";
+                    vemail = "";
+                    vsubject = "";
+                    vmessage = "";
+                }else{
+                    window.alert("Name Should Not be Empty!!!");
+                }
+            }
+        </script>
+    </head>
+    <body>
+
+        <div id="main_div" class="main">
+
+            <div id="navigation" class="nav_div">
+                <img src="devilDeveloperLogo.png" class="img_logo"/>
+                <button id="home" class="nav_button" onclick="home()" onmouseover="togglemouse()">Home</button>
+                <button id="about_us" class="nav_button" onclick="about()" onmouseover="togglemouse()">About Us</button>
+                <button id="bookings" class="nav_button" onclick="booking()" onmouseover="togglemouse()">Bookings</button>
+                <button id="recent_works" class="nav_button" onclick="recent()" onmouseover="togglemouse()">Recent Works</button>
+                <button id="contact_us" class="nav_button" onclick="contact()" onmouseover="togglemouse()">Contact Us</button>
+            </div>
+
+            <section id="meet_div" class="meet_div1">
+                <img src="./back/image1-min.jpg" class="img_main"/>
+                <div id="meet_dd_main" class="meet_dd">Meet<br>Devil Developer
+                    <h4 class="desc">Creating Beautiful Native Apps</h4>
+                    <p class="para">Hi there. As an App Developer, We create and develop beautiful things online that are engaging, interactive and user friendly.
+                     Get in touch to find out how my coding services can suit your needs.</p>
+                     <button id="Learn more" class="learn_more" onclick="about()" onmouseover="togglemouselearn()">Learn More</button>
+                </div>
+            </section>
+            
+            <section id="about_div" class="about_div_class">
+                <img src="./back/lap1-min.jpg" class="img_about"/>
+                <div id="about_main" class="about">A Bit About Us
+                    <h4 id="about_desc_id" class="about_desc">A Dedicated App Developer</h4>
+                    <p class="about_para">I’ve been working in the competitive App development field since 2019.
+                         I have working both on solo projects and also as part of a team. 
+                         This flexibility means I can perform well on whatever projects come my way.
+                         <br><br><br><br>
+                         From initial concept to the final result, I provide personalized attention and guidance throughout the whole process. As an App Developer, I have track record to help you succeed in today’s digital age.</p>
+                </div>
+            </section>
+
+            <section id="rw_div" class="rw_div_class">
+                <img src="./back/map-min.jpg" class="img_recent_works"/>
+                <div id="rw_id" class="rw">Recent Works
+                    <h4 id="rw_desc_id" class="rw_desc">We have recently worked in several projects</h4>
+                    <img src="./screenshots/signin.jpg" class="rw_img"/>
+                    <img src="./screenshots/second.jpg" class="rw_img"/>
+                    <img src="./screenshots/nav.jpg" class="rw_img"/>
+                    <img src="./screenshots/studentattendance.jpg" class="rw_img"/>
+                    <img src="./screenshots/facultydetails.jpg" class="rw_img"/>
+                    <img src="./screenshots/collegedetails.jpg" class="rw_img"/>
+                    <img src="./screenshots/eventdetails.jpg" class="rw_img"/>
+                </div>
+            </section>
+
+            <section id="contactus" class="cu_class">
+                
+                <div id="cu_div" class="cu">Contact Us
+                    <h4 id="cu_desc_id" class="cu_desc">feel free to ask</h4>
+                    <h4 class="contact">Chat Us : 7868844798</h4>
+                    <h4 class="contact">Mail Us: developerdevil13@gmail.com</h4>
+                    <h4 class="contact">Insta Direct : devildeveloper_13</h4>
+                    <h4 class="contact">Tweet us : devildeveloper_13</h4>                    
+                </div>
+
+                <img src="./back/App-min.jpg" class="cu_img"/>
+
+                <div class="inputs">
+                    <input class="input_class" id="name" placeholder="Name" type="text">
+                    <input class="input_class" id="profession" placeholder="profession" type="text">
+                    <input class="input_class" id="email" placeholder="Email" type="email">
+                    <input class="input_class" id="subject" placeholder="Subject" type="text">
+                    <input class="input_class_message" id="message" placeholder="Type Your Message Here" type="text">
+                    <button id="submit" class="submit_class" type="submit" onclick="submit()">Submit</button>
+                </div>
+                
+            </section>
+        </div>
+    </body>
+
+</html>
