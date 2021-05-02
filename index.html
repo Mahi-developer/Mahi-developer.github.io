@@ -1,168 +1,478 @@
 <html>
     <head>
-        <link rel="stylesheet" href="styleSheetIndex.css">
-        <title>
-            devilDeveloper
-        </title>
-        
-        <script
-            src="https://code.jquery.com/jquery-3.5.1.js"
-            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-            crossorigin="anonymous">
-        </script>
-        
+        <link rel="icon" href="icons/coding.png" type="image/gif"/>
+        <link rel="stylesheet" href="style_sheet.css"/>
+        <link rel="stylesheet" href="animatios.css"/>
+        <link rel="stylesheet" href="fonts.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Maheshwaran</title>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
         <script>
-            window.addEventListener('scroll',function(){
-                const parallax_1 = document.querySelector(".img_main");
-                let scrollPosition = window.pageYOffset;
-                const parallax = document.querySelector(".img_about");
-                parallax_1.style.transform = 'translateY('+scrollPosition*0.2+'px)';
-                parallax.style.transform = 'translateY('+scrollPosition*0.2+'px)';
-                const parallax_2 = document.querySelector(".img_recent_works");
-                parallax_2.style.transform = 'translateY('+scrollPosition*0.2+'px)';
-                const parallax_3 = document.querySelector(".cu_img");
-                parallax_3.style.transform = 'translateY('+scrollPosition*0.2+'px)';
-            })
-
-        </script>
-
-        <script>
-            function home(){
-                var focusto = document.getElementById("meet_dd_main");
-                focusto.scrollIntoView(true);
+            function moveTo(positionId){
+                var elem = document.getElementById(positionId);
+                elem.scrollIntoView({behavior:"smooth"});
             }
-            function about(){
-                var focusto = document.getElementById("about_main");
-                focusto.scrollIntoView(true);
+            function show_more(){
+                document.getElementById("open_panel").style.visibility = "visible"
+                document.getElementById("open_panel").style.display = "inline-block"
+                document.getElementById("more").style.animation = "fade_down_out 5s forwards"
+                document.getElementById("open_panel").style.animation = "fade_down 5s forwards"
+                document.getElementById("open_panel").onanimationend = function(event) {
+                    document.getElementById("open_panel").style.visibility = "visible"
+                }
             }
-            function booking(){
-
-            }
-            function recent(){
-                var focusto = document.getElementById("rw_id");
-                focusto.scrollIntoView(true);
-            }
-            function contact(){
-                var focusto = document.getElementById("cu_desc_id");
-                focusto.scrollIntoView(true);
-            }
-            function togglemouse(){
-                $(".nav_button").toggleClass("nav_button nav_button_mouse");                
-            }
-            function togglemouselearn(){
-                $(".learn_more").toggleClass("learn_more learn_more_mouse");
-            }
-        </script>
-
-        <script>
-            function submit(){
-                var vname = document.getElementById("name").value;
-                var vprofession = document.getElementById("profession").value;
-                var vemail = document.getElementById("email").value;
-                var vsubject = document.getElementById("subject").value;
-                var vmessage = document.getElementById("message").value;
-                
-
-                if(vname.length > 0){
-                    if(vprofession.length > 0){
-                        if(vemail.length > 0){
-
-                        }else{
-                            window.alert("Enter a Valid Email!!!")
-                        }
-                    }else{
-                        window.alert("Enter Your Profession!!!")
-                    }
-                    firebase.database().ref('web/'+name).set({
-                        name:vname,
-                        profession:vprofession,
-                        email:vemail,
-                        subject:vsubject,
-                        message:vmessage
-                    });
-                    vname.value = "";
-                    vprofession = "";
-                    vemail = "";
-                    vsubject = "";
-                    vmessage = "";
-                }else{
-                    window.alert("Name Should Not be Empty!!!");
+            function show_less(){
+                document.getElementById("more").style.animation = "fade_up 3s forwards"
+                document.getElementById("open_panel").style.animation = "fade_up_out 3s forwards"
+                document.getElementById("open_panel").onanimationend = function(event) {
+                    document.getElementById("open_panel").style.visibility = "hidden"
                 }
             }
         </script>
+        <script>
+            function loaded() {
+                document.getElementById('name_sec').style.animation = "bring_up .7s forwards"
+                if(isvisible(document.getElementById('name__').getBoundingClientRect())){
+                    document.getElementById('home').style.color = '#2F88FB';
+                    document.getElementById('home').style.fontSize = '95%';
+                    document.getElementById('home').style.cursor = 'auto';
+                }else{
+                    document.getElementById('home').style.color = 'white';
+                    document.getElementById('home').style.fontSize = '100%';
+                    document.getElementById('home').style.cursor = 'pointer';
+                }
+            }
+            function copy_txt(id){
+                document.execCommand("copy");
+                window.addEventListener('copy',function (event) {
+                    event.preventDefault();
+                    if(event.clipboardData){
+                        var text = document.getElementById(id).innerHTML;
+                        event.clipboardData.setData("text/plain", text);
+                    }
+                });
+                alert("Phone Number Copied!")
+            }
+            function isvisible(rect) {
+                return(rect.top>=0 && rect.left>=0 && rect.right <= (window.innerWidth || document.documentElement.clientWidth));
+            }
+        </script>
+        <script>
+            window.onscroll = function() {myfunc()};
+            function myfunc() {
+                const maxHeight = window.document.body.scrollHeight - window.innerHeight;
+                var scrolled = (window.scrollY / maxHeight) * 100;
+                document.getElementById("myBar").style.width = scrolled + '%';
+            }
+            window.addEventListener('scroll',function(event){
+                const parallax_1 = document.querySelector(".img");
+                let scrollPosition = window.pageYOffset;
+                console.log(scrollPosition*0.0006);
+                parallax_1.style.transform = 'translateY('+scrollPosition*-0.35+'px)';
+                const parallax_2 = document.querySelector(".content_holder");
+                parallax_2.style.transform = 'translateY('+scrollPosition*0.02+'px)';
+                var elem = document.getElementById("about_sec").style;
+                elem.animation = "bring_up 3s forwards"
+                rect = document.getElementById('move_education').getBoundingClientRect();
+                if(isvisible(rect)){
+                    document.getElementById('educate').style.animation = "bring_up 3s forwards"
+                }
+                if(isvisible(document.getElementById('visible').getBoundingClientRect())){
+                    document.getElementById('insta_').style.animation = "bring_up 2s forwards"
+                    document.getElementById('git_').style.animation = "bring_up 2s forwards .5s"
+                    document.getElementById('git_').onanimationstart = function() {
+                      document.getElementById("git_").opacity = "1";  
+                    };
+                    document.getElementById('in_').style.animation = "bring_up 2s forwards 1s"
+                    document.getElementById('in_').onanimationstart = function() {
+                      document.getElementById("in_").opacity = "1";  
+                    };
+                    document.getElementById('twit_').style.animation = "bring_up 2s forwards 1.5s"
+                    document.getElementById('twit_').onanimationstart = function() {
+                      document.getElementById("twit_").opacity = "1";  
+                    };
+                }
+                var mybutton = document.getElementById("top_button");
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            });
+        </script>
+        <script>
+            function scrollTotop(){
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
     </head>
-    <body>
-
-        <div id="main_div" class="main">
-
-            <div id="navigation" class="nav_div">
-                <img src="devilDeveloperLogo.png" class="img_logo"/>
-                <button id="home" class="nav_button" onclick="home()" onmouseover="togglemouse()">Home</button>
-                <button id="about_us" class="nav_button" onclick="about()" onmouseover="togglemouse()">About Us</button>
-                <button id="bookings" class="nav_button" onclick="booking()" onmouseover="togglemouse()">Bookings</button>
-                <button id="recent_works" class="nav_button" onclick="recent()" onmouseover="togglemouse()">Recent Works</button>
-                <button id="contact_us" class="nav_button" onclick="contact()" onmouseover="togglemouse()">Contact Us</button>
+    <body onloadstart="loadstarted()" onload="loaded()">
+        <section class="drawables">
+            <div id="line_top" class="right_top"></div>
+            <div id="line_bottom" class="right_bottom"></div>
+            <div id="line_top_l" class="left_top"></div>
+            <div id="line_bottom_l" class="left_bottom"></div>
+        </section>
+        <div id="home__" class="container">
+            <div class="home_division" id="move_home">
+                <header>
+                    <section class="header_section">
+                        <div class="profile_top">
+                            <img class="profileImage" src="photos/maheshwaran2.jpg"/>
+                            <h2 id="name__" class="name">Maheshwaran R</h2>
+                        </div>
+                        <button id="more" class="show_more" onclick="show_more()">
+                            <i class="fa fa-location-arrow"></i>Navigate</button>
+                        <div id="open_panel" class="panel">
+                            <button id="home" class="panel_button">
+                               <i class="fa fa-home"></i> Home</button>
+                            <button id="about" class="panel_button" onclick="moveTo('move_about')">
+                                <i class="fa fa-terminal"></i> About</button>
+                            <button id="skills" class="panel_button" onclick="moveTo('skillset')">
+                                <i class="fa fa-code"> </i> Skills</button>
+                            <button id="education" class="panel_button" onclick="moveTo('move_education')">
+                                <i class="fa fa-graduation-cap" style="margin-right: 4px;"></i> Education</button>
+                            <button id="contact" class="panel_button" onclick="moveTo('touch')">
+                                <i class="fa fa-phone"></i> Contact</button>
+                            <button id="less" class="show_less" onclick="show_less()">
+                                <i class="fa fa-caret-left"></i></button>
+                        </div>
+                    </section>
+                </header>
+                <section class="name_section" id="name_sec">
+                    <div class="name_holder">
+                        <label class="i_am">HELLO! I'M</label>
+                        <h1 id ="name" class="main_name">MAHESHWARAN R</h1>
+                    </div>
+                    <div class="profile_holder">
+                        <label class="i_am">I'M FROM CHENNAI</label>
+                        <h1 id ="developer" class="main_name">A ><span class="animate_typing">_</span> DEVELOPER</h1>
+                    </div>
+                </section>
             </div>
-
-            <section id="meet_div" class="meet_div1">
-                <img src="./back/image1-min.jpg" class="img_main"/>
-                <div id="meet_dd_main" class="meet_dd">Meet<br>Devil Developer
-                    <h4 class="desc">Creating Beautiful Native Apps</h4>
-                    <p class="para">Hi there. As an App Developer, We create and develop beautiful things online that are engaging, interactive and user friendly.
-                     Get in touch to find out how my coding services can suit your needs.</p>
-                     <button id="Learn more" class="learn_more" onclick="about()" onmouseover="togglemouselearn()">Learn More</button>
+            <div class="about_division">
+                <div class="img">
+                    <div class="img_holder">
+                        <div class="image_container">
+                            <img class="image_src" src="photos/maheshwaran_full.jpg"/>
+                        </div>
+                        <div class="overlay_container">
+                            <h1 class="header__text">Personal Details</h1><br><br>
+                            <label class="__txt">Name : Maheshwaran R</label><br><br>
+                            <label class="__txt">Date of Birth : 26 September 2000</label><br><br>
+                            <label class="__txt">Address : Thanjavur, TamilNadu</label><br><br>
+                            <label class="__txt">Email : maheshwaran.developer@gmail.com</label><br><br>
+                            <label class="__txt">Phone : 7868844798</label>  
+                        </div>
+                    </div>
                 </div>
-            </section>
-            
-            <section id="about_div" class="about_div_class">
-                <img src="./back/lap1-min.jpg" class="img_about"/>
-                <div id="about_main" class="about">A Bit About Us
-                    <h4 id="about_desc_id" class="about_desc">A Dedicated App Developer</h4>
-                    <p class="about_para">I’ve been working in the competitive App development field since 2019.
-                         I have working both on solo projects and also as part of a team. 
-                         This flexibility means I can perform well on whatever projects come my way.
-                         <br><br><br><br>
-                         From initial concept to the final result, I provide personalized attention and guidance throughout the whole process. As an App Developer, I have track record to help you succeed in today’s digital age.</p>
+                <section id="about_sec" class="about_section">
+                    <div class="about_container">
+                        <div class="about_holder">
+                            <h1 id="move_about" class="about_txt">ABOUT</h1>
+                        </div>
+                        <div class="content_holder">
+                            <div class="desc_holder">
+                                <label class="desc">Hi! I'm a Web & App Developer</label>
+                            </div>
+                            <div class="content_container">
+                                <p class="content">I am as of now pursuing my bachelor's degree from KCG
+                                    college of technology in IT domain.<br> I'm an web and mobile application developer.
+                                    <br>Looking for an position in the IT industry to utilize my
+                                    skills for enhancing my knowledge as well as for the
+                                    growth of the company.
+                                </p>
+                            </div>
+                            <div class="resume_container"> 
+                                <a id="resume" href="resume .pdf" class="resume_txt">Check out my resume</a>
+                            </div>
+                            <div class="icon_holder">
+                                <div class="insta_icon">
+                                    <a class="test" href="https://www.instagram.com/mahivds">
+                                        <span id="insta" class="fa fa-instagram span"></span>
+                                    </a>
+                                </div>
+                                <div class="git_icon">
+                                    <a class="test" href="https://github.com/Mahi-developer">
+                                        <span class="fa fa-github span" id="git"></span>
+                                    </a>
+                                </div>
+                                <div class="linked_icon">
+                                    <a class="test" href="https://www.linkedin.com/in/mahesh-waran-a944a6193">
+                                        <span id="linked" class="fa fa-linkedin span"></span>
+                                    </a>
+                                </div>
+                                <div class="twitter_icon">
+                                    <a class="test" href="https://twitter.com/Maheshw58556181">
+                                        <span id="twitter" class="fa fa-twitter span"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="contact__container">
+                                <div class="contact_txt_holder">
+                                    <label class="contact_txt">Contact me here!</label>
+                                </div>
+                                <div class="contact_details_holder">
+                                    <div class="email_holder">
+                                        <label class="mail_no_text">Email:</label>
+                                        <a href="https://mail.google.com/mail/u/0/?fs=1&to=maheshwaran.developer@gmail.com&tf=cm" class="mail_no">maheshwaran.developer@gmail.com</a>
+                                    </div>
+                                    <div class="phone_holder">
+                                        <label class="mail_no_text">Phone:</label>
+                                        <label id="phone" class="mail_no" onclick="copy_txt('phone')">
+                                        7868844798</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="interest" class="interest_division">
+                <div class="header_holder">
+                    <label class="header_txt">WHAT I DO</label>
                 </div>
-            </section>
-
-            <section id="rw_div" class="rw_div_class">
-                <img src="./back/map-min.jpg" class="img_recent_works"/>
-                <div id="rw_id" class="rw">Recent Works
-                    <h4 id="rw_desc_id" class="rw_desc">We have recently worked in several projects</h4>
-                    <img src="./screenshots/signin.jpg" class="rw_img"/>
-                    <img src="./screenshots/second.jpg" class="rw_img"/>
-                    <img src="./screenshots/nav.jpg" class="rw_img"/>
-                    <img src="./screenshots/studentattendance.jpg" class="rw_img"/>
-                    <img src="./screenshots/facultydetails.jpg" class="rw_img"/>
-                    <img src="./screenshots/collegedetails.jpg" class="rw_img"/>
-                    <img src="./screenshots/eventdetails.jpg" class="rw_img"/>
+                <div class="_header">
+                    <h1 class="_txt">Fascinated by</h1>
                 </div>
-            </section>
-
-            <section id="contactus" class="cu_class">
-                
-                <div id="cu_div" class="cu">Contact Us
-                    <h4 id="cu_desc_id" class="cu_desc">feel free to ask</h4>
-                    <h4 class="contact">Chat Us : 7868844798</h4>
-                    <h4 class="contact">Mail Us: developerdevil13@gmail.com</h4>
-                    <h4 class="contact">Insta Direct : devildeveloper_13</h4>
-                    <h4 class="contact">Tweet us : devildeveloper_13</h4>                    
+                <section class="fascinate_section"> 
+                    <div class="fascinate_container">
+                        <div id="app" class="holder">
+                            <div class="icon">
+                                <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_ovwipfv4.json"  
+                                background="transparent"  speed="1" loop autoplay></lottie-player>
+                                <div class="overlay">
+                                    <div class="text">Android</div>
+                                    <label class="text">Flutter</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text">App Development</label>
+                            </div>
+                        </div>
+                        <div id="web" class="holder">
+                            <div class="icon">
+                                <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_s616d5y9.json"  
+                                background="transparent"  speed="1" loop autoplay></lottie-player>
+                                <div class="overlay">
+                                    <div class="text">HTML CSS</div>
+                                    <label class="text">Javascript</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text">Web Development</label>
+                            </div>
+                        </div>
+                        <div id="code" class="holder">
+                            <div class="icon">
+                                <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_tkvbz71w.json"  
+                                background="transparent"  speed="1" loop autoplay></lottie-player>
+                                <div class="overlay">
+                                    <div class="text">Java</div>
+                                    <label class="text">Python</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text">Coding</label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="skillset" class="skills">
+                <div class="header_holder">
+                    <label class="header_txt">MY SKILLS</label>
                 </div>
-
-                <img src="./back/App-min.jpg" class="cu_img"/>
-
-                <div class="inputs">
-                    <input class="input_class" id="name" placeholder="Name" type="text">
-                    <input class="input_class" id="profession" placeholder="profession" type="text">
-                    <input class="input_class" id="email" placeholder="Email" type="email">
-                    <input class="input_class" id="subject" placeholder="Subject" type="text">
-                    <input class="input_class_message" id="message" placeholder="Type Your Message Here" type="text">
-                    <button id="submit" class="submit_class" type="submit" onclick="submit()">Submit</button>
+                <div class="_header">
+                    <h1 class="_txt">Check out my Proficiencies in</h1>
                 </div>
-                
-            </section>
+                <div class="skills_container">
+                    <div class="skill_holder">
+                        <label class="skill_text">Java</label>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_unfilled fa fa-star-o" style="font-size: 20pt;"></span>
+                    </div>
+                    <div class="skill_holder">
+                        <label class="skill_text">Python</label>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star-half-o" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_unfilled fa fa-star-o" style="font-size: 20pt;"></span>
+                    </div>
+                    <br>
+                    <div class="skill_holder">
+                        <label class="skill_text">HTML</label>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_unfilled fa fa-star-o" style="font-size: 20pt;"></span>
+                    </div>
+                    <div class="skill_holder">
+                        <label class="skill_text">CSS</label>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_unfilled fa fa-star-o" style="font-size: 20pt;"></span>
+                    </div>
+                    <div class="skill_holder">
+                        <label class="skill_text">Javascript</label>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star-half-o" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_unfilled fa fa-star-o" style="font-size: 20pt;"></span>
+                    </div>
+                    <div class="skill_holder">
+                        <label class="skill_text">Bootstrap</label>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star-half-o" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_unfilled fa fa-star-o" style="font-size: 20pt;"></span>
+                    </div>
+                    <div class="skill_holder">
+                        <label class="skill_text">Dart</label>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_filled fa fa-star" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_unfilled fa fa-star-o" style="font-size: 20pt;"></span>
+                        <span class="skill_stars_unfilled fa fa-star-o" style="font-size: 20pt;"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="move_education" class="education">
+                <div class="header_holder">
+                    <label class="header_txt">STUDIES</label>
+                </div>
+                <div class="_header">
+                    <h1 id="edu" class="_txt">Education&ensp;&#128218;</h1>
+                </div>
+                <div id="educate" class="education_container">
+                    <div class="college_holder">
+                        <label class="text">B.Tech Information Technology</label><br>
+                        <label class="edu_text">KCG College Of Technology, 2018 - Present</label><br>
+                        <label class="tag_text">Current CGPA : </label>
+                        <h1 id="college_count" class="count">8.018</h1>
+                    </div>
+                    <div class="center_container">
+                        <div class="_12_holder">
+                            <label class="text">Higher Secondary</label><br>
+                            <label class="edu_text">Dharani Matriculation Higher Secondary School, 2016 - 2018</label><br>
+                            <label class="tag_text">Passed out with : </label>
+                            <h1 id="_12_count" class="count">72.08<label class="percent">%</label></h1>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="right_container">
+                        <div class="_10_holder">
+                            <label class="text">High School</label><br>
+                            <label class="edu_text">Dharani Matriculation Higher Secondary <br>School, 2014 - 2016</label><br>
+                            <label class="tag_text">Passed out with : </label>
+                            <h1 id="_10_count" class="count">92.60<label class="percent">%</label></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects">
+                <div class="header_holder">
+                    <label class="header_txt">PROJECTS</label>
+                </div>
+                <div class="_header">
+                    <h1 id="edu" class="_txt">Check out a few of my works</h1>
+                </div>
+                <div class="projects_container">
+                    <div class="project_holder">
+                        <div class="project_image_holder">
+                            <img class="project_image" src="photos/attendanceLog1.jpg">
+                        </div>
+                        <div class="project_desc">
+                            <label class="field">ANDROID APPLICATION</label>
+                            <h1 class="text">Attendance Log Application for Schools and Colleges</h1>
+                            <p class="content">An android application for both schools and colleges to maintain 
+                                attendance register for their students as well as staff members. 
+                            </p>
+                            <a href="https://play.google.com/store/apps/details?id=com.devildeveloper.attendancelog" class="more">View project</a>
+                        </div>
+                    </div>
+                    <div class="project_holder_2">
+                        <div class="project_desc">
+                            <label class="field">ANDROID APPLICATION</label>
+                            <h1 class="text">Mobile Controller for Arduino 4 Wheel Drive Toy Car</h1>
+                            <p class="content">An android application to control an arduino controlled 4 wheel drive 
+                                toy RC car remotely from android mobile using bluetooth module. 
+                            </p>
+                            <a href="https://github.com/Mahi-developer/Arduino-RC-Car-Controller-" class="more">View project</a>
+                        </div>
+                        <div class="project_image_holder">
+                            <img class="project_image" src="photos/arduino.jpg">
+                        </div>
+                    </div>
+                    <div class="project_holder">
+                        <div class="project_image_holder">
+                            <img class="project_image" src="photos/portfolio.jpg">
+                        </div>
+                        <div class="project_desc">
+                            <label class="field">WEB PORTFOLIO</label>
+                            <h1 class="text">My Personal Portfolio</h1>
+                            <p class="content">A personal portfolio website which describes about myself and also about my personal interests, 
+                                projects, education and skills. 
+                            </p>
+                            <a href="https://mahi-developer.github.io/" class="more">View project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact">
+                <div class="contact_container">
+                    <div id="touch" class="icon_holder">
+                        <div id="insta_" class="insta_icon">
+                            <a class="test" href="https://www.instagram.com/mahivds">
+                                <span id="insta" class="fa fa-instagram span"></span>
+                            </a>
+                        </div>
+                        <div id="git_" class="git_icon">
+                            <a class="test" href="https://github.com/Mahi-developer">
+                                <span class="fa fa-github span" id="git"></span>
+                            </a>
+                        </div>
+                        <div id="in_" class="linked_icon">
+                            <a class="test" href="https://www.linkedin.com/in/mahesh-waran-a944a6193">
+                                <span id="linked" class="fa fa-linkedin span"></span>
+                            </a>
+                        </div>
+                        <div id="twit_" class="twitter_icon">
+                            <a class="test" href="https://twitter.com/Maheshw58556181">
+                                <span id="twitter" class="fa fa-twitter span"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="visible" class="_contact header_holder">
+                        <label class="header_txt"><i class="fa fa-comments-o" style="font-size: 20pt;"></i></label>
+                    </div>  
+                    <div class="_header">
+                        <h1 class="_txt">Get In Touch</h1>
+                    </div>
+                    <div class="_header">
+                        <h1 class="mail">maheshwaran.developer@gmail.com</h1>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <label class="footer_txt">&#169; Maheshwaran 2021</label>
+            </footer>
+        </div>
+        <div class="float_icon_holder">
+            <div id="top_button" onclick="scrollTotop()"  class="float_icon"><a class="fa fa-arrow-up i"></a></div>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="myBar"></div>
         </div>
     </body>
-
 </html>
