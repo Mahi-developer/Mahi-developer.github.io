@@ -1,0 +1,145 @@
+/*animations*/
+
+@keyframes animate_right_bottom {
+    0% {
+        margin-top: 31%;
+        width: 0%;
+    }
+    100%{
+        width: 21%;
+    }
+}
+@keyframes animate_right_top{
+    0% {
+        margin-left: 65%;
+        width: 0%;
+    }
+    100%{
+        width: 60%;
+    }
+}
+@keyframes animate_left_bottom {
+    0% {
+        margin-top: 50%;
+        width: 0%;
+    }
+    100%{
+        width: 10%;
+    }
+}
+@keyframes animate_left_top{
+    0% {
+        margin-left: 10%;
+        width: 0%;
+    }
+    100%{
+        width: 29%;
+    }
+}
+@keyframes bring_up {
+    0%{
+        opacity: 0;
+        transform: translateY(5rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fade_down {
+    0% {
+        opacity: 0;
+        transform: translateX(-7rem) ;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes fade_down_out {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-3rem);
+    }
+}
+
+@keyframes fade_up {
+    0% {
+        opacity: 0;
+        transform: translateX(-3rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes fade_up_out {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-7rem);
+    }
+}
+@keyframes fade_in {
+    0%,45%{
+        transform: scale(0.97);
+        opacity: 0;
+    }
+    55%,100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes fade_out {
+    0% ,45%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fillAction {
+    0% {
+        transform: translate(0, 150px);
+    }
+    100% {
+        transform: translate(0, -5px);
+    }
+}
+@keyframes waveAction {
+    0% {
+        transform: translate(-150px, 0);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes zoomin {
+    0%{
+        transform: scale(0);
+    }100%{
+        transform: scale(1.1);
+    }
+}
+@keyframes zoomout {
+    0%{
+        transform: scale(5rem);
+    }100%{
+        transform: scale(0);
+    }
+}
