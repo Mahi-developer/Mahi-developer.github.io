@@ -430,7 +430,6 @@ ul{
 }
 /* interest dividion class */
 .interest_division{
-    height: 500pt;
     margin-top: 160pt;
     text-align: center;
 }
@@ -497,7 +496,7 @@ ul{
 
 /* skills */
 .skills{
-    margin-top: 110pt;
+    margin-top: 280pt;
     padding-top: 20pt;
     text-align: center;
 }
@@ -615,6 +614,7 @@ ul{
 
 /* projects */
 .projects{
+    height: fit-content;
     text-align: center;
     margin-top: 100pt;
     padding: 20pt;
@@ -622,7 +622,6 @@ ul{
 .projects_container{
     margin-top: 160pt;
     margin-left: 80pt;
-    margin-right: 80pt;
 }
 .project_holder{
     height: 500px;
@@ -699,6 +698,7 @@ ul{
 .contact{
     text-align: center;
     margin-top: 280pt;
+    position: relative;
 }
 .contact_container{
     margin-left: 80pt;
