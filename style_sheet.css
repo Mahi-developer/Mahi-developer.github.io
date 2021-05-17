@@ -114,9 +114,6 @@ body{
     border: transparent;
     color: white;
     font-size: 100%;
-    border-right: 1.5px solid whitesmoke;
-    border-left: 1.5px solid whitesmoke;
-    border-radius: 5px;
     transition: .3s ease all;
 }
 
@@ -158,9 +155,6 @@ body{
     border: transparent;
     color: white;
     font-size: 100%;
-    border-left: 1.5px solid white;
-    border-right: 1.5px solid white;
-    border-radius: 5px;
     transition: .3s ease all;
 }
 .show_less:hover{
