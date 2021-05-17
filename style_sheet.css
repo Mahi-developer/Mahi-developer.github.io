@@ -1,6 +1,7 @@
 /*padiing btw icon and text*/
 html{
     scroll-behavior: smooth;
+    overflow: hidden;
 }
 i{
     margin-right: 12px;
