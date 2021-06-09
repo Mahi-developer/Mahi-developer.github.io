@@ -101,7 +101,7 @@ body{
     color: white;
 }
 
-/*show more clss*/
+/*show more class*/
 .show_more{
     margin-left: 10.5%;
     margin-top: 15px; 
@@ -688,10 +688,20 @@ ul{
     transform: translateY(-1.5rem);
 }
 
+/* hobbies */
+.hobbies{
+    text-align: center;
+    margin-top: 260pt;
+    position: relative;
+}
+.hobbie_container{
+    margin-top: 100pt;
+}
+
 /* contact */
 .contact{
     text-align: center;
-    margin-top: 280pt;
+    margin-top: 200pt;
     position: relative;
 }
 .contact_container{
@@ -701,7 +711,7 @@ ul{
     text-align: center;
 }
 ._contact{
-    margin-top: 120pt;
+    margin-top: 100pt;
 }
 .mail{
     font-family: caros_light;
@@ -775,4 +785,34 @@ footer{
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.hobbie_holder{
+    margin-top: 60pt;
+    display: inline-block;
+    margin-left: 10pt;
+    margin-right:10pt;
+    border-radius: 25px;
+    transition: .5s ease all;
+}
+
+.anim{
+    width: 250px;
+    height: 310px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20pt;
+    margin-bottom: -50px;
+    padding: 10pt;
+}
+
+.hobbie_container .text{
+    color: wheat;
+}
+
+.hobbie_container .hobbie_holder:hover{
+    transform: scale3d(1.07,1.07,1.07);
+}
+
+.hobbie_container a{
+    text-decoration: none;
 }
